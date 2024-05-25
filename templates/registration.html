@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<script src="{% static 'js/passcompare.js' %}"></script>
+
+<div class="loginContflex">
+<div class="loginCont">
+
+<div class="bigCenter">
+    REGISTRATION
+</div>
+
+<div class="formCont">
+    <form action="{% url 'registration' %}" id="registrationForm" method="post" class="loginForm" onsubmit="return Validation(event);">
+        {% csrf_token %}
+        {% if loginError %}
+
+            <div class="errorMessage">
+                {{ loginError }}
+            </div>
+
+        {% endif %}
+
+        <div id = "errorMessCont" >
+            <div class="errorMessage" id="clientErrorMessage" style="display: none;">
+                
+            </div>
+        </div>
+
+        <div class="formElement">
+            <label for="nickname" class="formLabel">Nickname:</label> <input type="text" name="nickname" id="nickname">
+        </div>
+
+        <div class="formElement">
+            <label for="email" class="formLabel">Email:</label> <input type="email" name="email" id="email">
+        </div>
+
+        <div class="formElement">
+            <label for="password" class="formLabel">Password:</label> <input type="password" name="password" id="password">
+        </div>
+
+        <div class="formElement">
+            <label for="passwordConf" class="formLabel">Password confirmation:</label> <input type="password" name="passwordConf" id="passwordConf">
+        </div>
+
+        <div class="centeredCont">
+            <button type="submit" class = "blueButton" id = "regButton">Continue</button>
+        </div>
+        
+    </form>
+    
+</div>
+
+
+
+<div class="centerSmallText">
+    Already have an account? You can log in <a href="{% url 'login' %}"><u>here</u></a>
+</div>
+
+</div>
+
+</div>
+
+
+{% endblock %}

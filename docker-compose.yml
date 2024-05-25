@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  django:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=1
+    networks:
+      - nginx_network
+
+  daphne:
+    build: .
+    command: daphne -p 8666 -b 0.0.0.0 webProject.asgi:application
+    volumes:
+      - .:/app
+    ports:
+      - "8666:8666"
+    depends_on:
+      - redis
+    networks:
+      - nginx_network
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./static:/static
+      - ./media:/media
+    networks:
+      - nginx_network
+
+  redis:
+    image: "redis:alpine"
+    networks:
+      - nginx_network
+
+networks:
+  nginx_network:
+    external: true

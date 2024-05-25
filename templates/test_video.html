@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href = "{% static 'css/plyr.css' %}" /> 
+
+<script src="{% static 'js/plyr.js' %}"></script>
+
+<video id="player" playsinline controls>
+    <source src="http://185.193.137.147:9999/_Share/RickRoll.mp4" type="video/mp4" />
+</video>
+
+  <script>
+    const player = new Plyr('#player');
+  </script>
+
+<h1 class="videoTitle">
+    Gembo Rick roll
+</h1>
+
+{% endblock %}

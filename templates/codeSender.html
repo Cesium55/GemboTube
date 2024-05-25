@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<script src="{% static 'js/confirmation.js' %}"></script>
+
+<div class="loginContflex">
+<div class="loginCont">
+
+<div class="bigCenter">
+    CONFIRMATION
+</div>
+
+<div class="center16Text">
+    An email has been sent to your email address to confirm your account
+</div>
+
+<div class="formCont">
+    <form action="{% url 'mailconfirmation' %}" id="ConfirmForm" method="post" class="loginForm" onsubmit="return Send(event)">
+        {% csrf_token %}
+        {% if loginError %}
+
+            <div class="errorMessage">
+                {{ loginError }}
+            </div>
+
+        {% endif %}
+
+        <div id = "errorMessCont" >
+            <div class="errorMessage" id="clientErrorMessage" style="display: none;">
+                
+            </div>
+        </div>
+
+        <div class="formElement">
+            <label for="confirmPass" class="formLabel">Code:</label> <input type="text" name="confirmPass" id="confirmPass">
+        </div>
+
+        <div class="centerSmallText">
+            No code? <a href="{% url 'mailconfirmation' %}"><u>Send it again.</u></a>
+        </div>
+
+        <div class="centeredCont">
+            <button type="submit" class = "blueButton" id = "logButton">Confirm</button>
+        </div>
+
+    </form>
+    
+</div>
+    
+</div>
+      
+</div>
+
+
+{% endblock %}

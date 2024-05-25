@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href = "{% static 'css/plyr.css' %}" /> 
+
+<script src="{% static 'js/plyr.js' %}"></script>
+
+
+
+<div class="video">
+    <video id="player" playsinline controls>
+
+        <source src="{{ video.originalVideo.url }}" type="video/mp4" size="10">
+
+        {% if video.video_2160 %}
+        <source src="{{ video.video_2160.url }}" type="video/mp4" size="2160">
+        {% endif %}
+        {% if video.video_1440 %}
+        <source src="{{ video.video_1440.url }}" type="video/mp4" size="1440">
+        {% endif %}
+        {% if video.video_1080 %}
+        <source src="{{ video.video_1080.url }}" type="video/mp4" size="1080">
+        {% endif %}
+        {% if video.video_720 %}
+        <source src="{{ video.video_720.url }}" type="video/mp4" size="720">
+        {% endif %}
+        {% if video.video_480 %}
+        <source src="{{ video.video_480.url }}" type="video/mp4" size="480">
+        {% endif %}
+        {% if video.video_360 %}
+        <source src="{{ video.video_360.url }}" type="video/mp4" size="360">
+        {% endif %}
+        {% if video.video_240 %}
+        <source src="{{ video.video_240.url }}" type="video/mp4" size="240">
+        {% endif %}
+
+
+
+    </video>
+</div>
+
+
+
+  <script>
+    const player = new Plyr('#player', {
+      ratio: '16:9',
+    });
+  </script>
+
+<div id="videoid" style="display: none;">{{ video.id }}</div>
+
+<div class="gemboPanel">
+  <h1 class="videoTitle">
+    {{ video.title }}
+  </h1>
+
+<div class="likedislike">
+  {% if like %}
+
+  <div class = "likeButton" id="likeButton">
+  <img class="likeImg" src="{% static 'img/activeLike.png' %}" alt="like" id="likeIMG">
+  <p class="cornerNickname" id="likeCounter">
+    {{ video.likes }}
+  </p>
+  </div>
+
+
+  {% else %}
+
+  <div class = "likeButton" id="likeButton">
+    <img class="likeImg" src="{% static 'img/inactiveLike.png' %}" alt="like" id="likeIMG">
+    <p class="cornerNickname" id="likeCounter">
+      {{ video.likes}}
+    </p>
+    </div>
+
+  {% endif %}
+
+
+  {% if dislike %}
+
+  <div class = "dislikeButton" id="dislikeButton">
+  <img class="dislikeImg" src="{% static 'img/activeDislike.png' %}" alt="dislike" id="dislikeIMG">
+  <p class="cornerNickname" id="dislikeCounter">
+    {{ video.dislikes }}
+  </p>
+  </div>
+
+
+  {% else %}
+
+  <div class = "dislikeButton" id="dislikeButton">
+    <img class="dislikeImg" src="{% static 'img/inactiveDislike.png' %}" alt="dislike" id="dislikeIMG">
+    <p class="cornerNickname" id="dislikeCounter">
+      {{ video.dislikes}}
+    </p>
+    </div>
+
+  {% endif %}
+  
+</div>
+
+</div>
+
+{% if video.author.avatar.url and video.author.nickname %}
+
+<div class="cornerProfile">
+  <img class="cornerImg" src="{{ video.author.avatar.url }}" alt="author image" >
+  <p class="cornerNickname">
+    {{ video.author.nickname }}
+  </p>
+</div>
+
+{% else %}
+
+<div class="cornerProfile">
+  <img class="cornerImg" src="{% static 'img/defaultAvatar.jpg' %}" alt="author image" >
+  <p class="cornerNickname">
+    {{ video.author.nickname }}
+  </p>
+</div>
+
+{% endif %}
+
+<h1 class="videoTitle">
+  Описание
+</h1>
+
+<div class="VideoDescription" readonly>
+  {{ video.description|linebreaks }}
+</div>
+
+
+{% for com in comments %}
+
+<div>
+  <h1>{{ com.source.nickname }}</h1>
+  {{ com.text|linebreaks}}
+</div>
+
+{% endfor %}
+
+<script>
+
+like_img_url = "{% static 'img/activeLike.png' %}"
+unlike_img_url = "{% static 'img/inactiveLike.png' %}"
+dislike_img_url = "{% static 'img/activeDislike.png' %}"
+undislike_img_url = "{% static 'img/inactiveDislike.png' %}"
+
+</script>
+
+<script src="{% static 'js/reaction.js' %}"></script>
+
+<script>
+  like_status = {% if like %}true{% else %}false{% endif %};
+  if (!like_status){
+    document.getElementById("likeButton").addEventListener("click", like);
+  }
+
+  else {
+    document.getElementById("likeButton").addEventListener("click", unlike);
+  }
+
+
+  dislike_status = {% if dislike %}true{% else %}false{% endif %};
+  if (!dislike_status){
+    document.getElementById("dislikeButton").addEventListener("click", dislike);
+  }
+
+  else {
+    document.getElementById("dislikeButton").addEventListener("click", undislike);
+  }
+
+
+</script>
+
+
+{% endblock %}

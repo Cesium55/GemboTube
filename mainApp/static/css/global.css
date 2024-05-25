@@ -1,0 +1,298 @@
+@keyframes descriptionArrive{
+    from{
+        font-size: 0;
+    }
+
+    to{
+        font-size: 15px;
+    }
+}
+
+html{
+    background-color: rgb(49, 51, 56);
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+a{
+    color:white;
+    text-decoration: none;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.navPanel{
+    display: flex;
+}
+
+.navElement{
+    color: white;
+    margin: 10px;
+}
+
+.navElementLink{
+    color:white; 
+    text-decoration: none;
+}
+
+.video .plyr {
+	width: 75%;
+}
+
+.description{
+    max-width: 600px;
+    margin-top: 50px;
+
+    font-size: 15px;
+
+    /* animation-name: descriptionArrive;
+    animation-duration: 2s; */
+}
+
+.bigCenter{
+    font-size: 50px;
+    text-align: center;
+}
+
+.centerSmallText{
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.centerSmallTextRed{
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+    color: rgb(255, 81, 0);
+}
+
+.center16Text{
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+#mainLogo{
+    width: 300px;
+}
+
+.FixedMenu{
+    background-color: darkslateblue;
+    position:fixed;
+    display: flex;
+    flex-direction: column;
+
+    padding: 15px;
+
+    border-radius: 5%;
+
+    top: 80px;
+    right:30px
+
+}
+
+.loginContflex {
+    display: flex;
+    justify-content: space-around;
+}
+
+.loginCont {
+    margin-top: 100px;
+    border: 1px gray solid;
+    display: inline-block;
+    padding: 20px;
+}
+
+.formCont{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.loginForm{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.formElement{
+    margin-top: 10px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.formLabel{
+    margin-right: 10px;
+}
+
+.errorMessage{
+    background: rgba(256, 0, 0, 0.5);
+    border: 1px red solid;
+    padding: 5px;
+    margin: 5px;
+}
+
+.centeredCont{
+    display: flex;
+    justify-content: space-around;
+}
+
+.blueButton{
+    background-color: rgb(48,150,194);
+    width: fit-content;
+    padding: 5px 10px;
+    border: none;
+    color:white;
+    font-size: 20px;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+.mainAvatar{
+    width: 300px;
+    height: 300px;
+    position: relative;
+    top:0;
+}
+
+.cornerProfile{
+    display: flex;
+    justify-content: start;
+
+    margin-left: 15px;
+    margin-right: 15px;
+
+}
+
+.cornerImg{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    margin-right: 15px;
+}
+
+.videoAvatar{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    margin-right: 15px;
+}
+
+.cornerNickname{
+    /* max-width: 100px; */
+    font-size: 20px;
+}
+
+.activationNotification{
+    background-color: rgb(48,150,194);
+    text-align: center;
+    padding: 1px;
+    margin-bottom: 30px;
+}
+
+.activationNotification a{
+    text-decoration: underline;
+}
+
+
+.avatarCont{
+    width: 300px;
+    height: 300px;
+
+    border: 1px solid black;
+}
+
+.avatarControl{
+    position: relative;
+    text-align: center;
+    line-height: 25px;
+
+    background-color: rgba(48,150,194, 0.5);
+    text-decoration: underline;
+
+    top: -304px;
+    z-index: 100;
+
+    visibility: hidden;
+}
+
+.avatarCont:hover .avatarControl{
+    visibility: visible;
+    transition-duration: 3s;
+}
+
+
+.hoverHand:hover{
+    cursor: pointer;
+}
+
+
+.videoList{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.videoBlock{
+    width: 256px;
+    height: 200px;
+    margin: 10px;
+    margin-top: 30px;
+
+    /* border: 1px solid black; */
+
+    border-radius: 10px 10px 10% 10%;
+}
+
+.videoThumbCont{
+    width: 256px;
+    height: 144px;
+    background-color: black;
+    border-radius: 10px 10px 0 0;
+}
+
+.smallThumbImage{
+    width: 256px;
+    height: 144px;
+
+    border-radius: 10px 10px 0 0;
+}
+
+.videoBlockInfo{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background-color: rgb(35, 35, 35);
+
+    border-radius: 0 0 13px 13px;
+}
+
+.videoBlockAuthor{
+    text-align: right;
+}
+
+.videoBlockAuthor a{
+    color: grey;
+}
+
+.videoBlockTitle{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+}
+
+.VideoDescription {
+    width: 70%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 3px solid #727272;
+    letter-spacing: 1px;
+  }

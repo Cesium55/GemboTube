@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="videoList">
+
+    {% if videos %}
+
+    {% for video in videos %}
+
+    <div class="videoBlock">
+        <a href="{% url 'video' %}?id={{ video.id }}"><div class="videoThumbCont">
+            {% if video.thumbImage %}
+            <img class = "smallThumbImage" src="{{ video.thumbImage.url }}" alt="video {{ video.id }} thumb">
+            {% endif %} 
+        </div>
+        </a>
+
+        <div class="videoBlockInfo">
+            <div class="videoBlockTitle">
+                <a href="{% url 'video' %}?id={{ video.id }}">{{ video.title }}</a>
+            </div>
+
+            <div class="videoBlockAuthor">
+                <a href="#"> {{ video.author.nickname }} </a>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+    {% else %}
+    <h1>
+        No videos
+    </h1>
+    {% endif %}
+
+</div>
+
+
+{% endblock %}

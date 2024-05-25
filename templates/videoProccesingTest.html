@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<form action="{% url 'videoProcTest' %}" method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    {{ videoForm.as_p }}
+
+    <button type="submit">Submit</button>
+
+</form>
+
+
+{% endblock %}
